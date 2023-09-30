@@ -4,6 +4,13 @@ public class Board {
     Scanner shipBot = new Scanner(System.in);
     int numRows = 10;
     int numCols = 10;
+
+    final int destroyerLength = 2;
+    final int cruiserLength = 3;
+    final int submarineLength = 3;
+    final int battleshipLength = 4;
+    final int carrierLength = 5;
+
     int[] ships = new int[5]; //{2, 3, 3, 4, 5};
 
     int[][] game = new int[numRows][numCols];
@@ -41,16 +48,24 @@ public class Board {
         while (colPos < 1 || colPos > 10);
         colPos--;
 
+        setShipDir("Destroyer");
+        
+    }
+    
+    public void setShipDir(String shipName) {
+        System.out.println("");
         do {
-            System.out.println("What direction would you like the Destroyer to face?");
+            System.out.println("What direction would you like the " + shipName + " to face?");
             System.out.print("1. Up \n2. Down \n3. Left \n4. Right \n");
             shipDir = shipBot.nextInt();
         }
-        while (shipDir < 1 || shipDir > 4);
-
-        if (shipDir == 1) {
-            
-        }
+        while (shipDir < 1 || shipDir > 4); 
         
+        if (shipDir == 1) {
+            if (rowPos + destroyerLength >= numRows) {
+                System.out.println("\nSorry but you cannot place the ship there\n");
+                setShipDir("Destroyer");
+            }
+        }
     }
 }
