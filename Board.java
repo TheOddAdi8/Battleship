@@ -23,21 +23,34 @@ public class Board {
 
     int rowPos = 0;
     int colPos = 0;
+    int shipDir = 0;
 
-    public void setPiece() {
+    public void placeShip() {
+        //Destroyer (2-units)
         do {
-            System.out.print("Enter the row number of the head of the 2-unit ship (1-10): ");
+            System.out.print("Enter the row number (1-10) of the head of the Destroyer (2 units): ");
             rowPos = shipBot.nextInt();
         }
         while (rowPos < 1 || rowPos > 10);
         rowPos--;
 
         do {
-            System.out.print("Enter the column number of the head of the 2-unit ship: ");
+            System.out.print("Enter the column number (1-10) of the head of the Destroyer (2 units): ");
             colPos = shipBot.nextInt();
         }
         while (colPos < 1 || colPos > 10);
         colPos--;
+
+        do {
+            System.out.println("What direction would you like the Destroyer to face?");
+            System.out.print("1. Up \n2. Down \n3. Left \n4. Right \n");
+            shipDir = shipBot.nextInt();
+        }
+        while (shipDir < 1 || shipDir > 4);
+
+        if (shipDir == 1) {
+            
+        }
         
     }
 }
