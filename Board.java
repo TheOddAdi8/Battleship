@@ -15,6 +15,13 @@ public class Board {
 
     int[][] game = new int[numRows][numCols];
 
+    //**************
+    //*  0 = empty *
+    //*  1 = ship  *
+    //*  2 = hit   *
+    //*  3 = miss  *
+    //**************
+
     public void printBoard() {
 
         for (int r = 0; r < numRows; r++) {
@@ -32,7 +39,7 @@ public class Board {
     int colPos = 0;
     int shipDir = 0;
 
-    public void placeShip() {
+    public void setShipPos() {
         //Destroyer (2-units)
         do {
             System.out.print("Enter the row number (1-10) of the head of the Destroyer (2 units): ");
@@ -48,11 +55,13 @@ public class Board {
         while (colPos < 1 || colPos > 10);
         colPos--;
 
-        setShipDir("Destroyer");
+
+
+        setShipDir("Destroyer", destroyerLength);
         
     }
     
-    public void setShipDir(String shipName) {
+    public void setShipDir(String shipName, int shipLength) {
         System.out.println("");
         do {
             System.out.println("What direction would you like the " + shipName + " to face?");
@@ -61,11 +70,51 @@ public class Board {
         }
         while (shipDir < 1 || shipDir > 4); 
         
+        int endPos;
+
         if (shipDir == 1) {
-            if (rowPos + destroyerLength >= numRows) {
-                System.out.println("\nSorry but you cannot place the ship there\n");
-                setShipDir("Destroyer");
+            endPos = rowPos + shipLength;
+            if (endPos > numRows) {
+                errorMsg();
+                setShipDir(shipName, shipLength);
+            }
+            for (int i = rowPos; i < endPos; i++) {
+                game[i][colPos] = 1;
             }
         }
+        else if (shipDir == 2) {
+            endPos = rowPos - shipLength;
+            if (endPos < 0) {
+                errorMsg();
+                setShipDir(shipName, shipLength);
+            }
+            for (int i = colPos; i > endPos; i--) {
+                game[i][colPos] = 1;
+            }
+        }
+        else if (shipDir == 3) {
+            endPos = colPos + shipLength;
+            if (endPos > numCols) {
+                errorMsg();
+                setShipDir(shipName, shipLength);
+            }
+            for (int i = colPos; i < endPos; i++) {
+                game[rowPos][i] = 1;
+            }
+        }
+        else if (shipDir == 4) {
+            endPos = colPos + shipLength;
+            if (endPos < 0) {
+                errorMsg();
+                setShipDir(shipName, shipLength);
+            }
+            for (int i = rowPos; i > endPos; i--) {
+                game[rowPos][i] = 1;
+            }
+        }
+    }
+
+    public void errorMsg() {
+        System.out.println("\nSorry but you cannot place the ship there\n");
     }
 }
