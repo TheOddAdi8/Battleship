@@ -39,7 +39,7 @@ public class Board {
     int colPos = 0;
     int shipDir = 0;
 
-    public void setShipPos() {
+    public void setShipPos(String shipName, int shipLength) {
         //Destroyer (2-units)
         do {
             System.out.print("Enter the row number (1-10) of the head of the Destroyer (2 units): ");
@@ -55,9 +55,7 @@ public class Board {
         while (colPos < 1 || colPos > 10);
         colPos = colPos - 1;
 
-
-
-        setShipDir("Destroyer", destroyerLength);
+        setShipDir(shipName, shipLength);
         
     }
     
