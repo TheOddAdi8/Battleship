@@ -11,6 +11,12 @@ public class UserBoard {
     final int battleshipLength = 4;
     final int carrierLength = 5;
 
+    int[] destroyerStartEnd = new int[4];
+    int[] cruiserStartEnd = new int[4];
+    int[] submarineStartEnd = new int[4];
+    int[] battleshipStartEnd = new int[4];
+    int[] carrierStartEnd = new int[4];
+
     int[] ships = new int[5]; //{2, 3, 3, 4, 5};
 
     int[][] game = new int[numRows][numCols];
@@ -20,6 +26,7 @@ public class UserBoard {
     //*  1 = ship  *
     //*  2 = hit   *
     //*  3 = miss  *
+    //*  4 = sink? *
     //**************
 
     public void printBoard() {
