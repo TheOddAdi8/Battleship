@@ -9,7 +9,7 @@ public class Tester {
     public static void enter() {
         System.out.println("");
     }
-    
+    //every method should have a comment
 
     public static void main(String[] args) {
         UserBoard b1 = new UserBoard();
