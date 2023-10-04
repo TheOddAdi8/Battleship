@@ -14,11 +14,11 @@ public class Tester {
     public static void main(String[] args) {
         UserBoard b1 = new UserBoard();
         b1.printBoard();
-        b1.setShipPos("Destroyer", destroyerLength);
-        b1.setShipPos("Cruiser", cruiserLength);
-        b1.setShipPos("Submarine", submarineLength);
-        b1.setShipPos("Battleship", battleshipLength);
-        b1.setShipPos("Carrier", carrierLength);
+        b1.userSetShipPos("Destroyer", destroyerLength);
+        b1.userSetShipPos("Cruiser", cruiserLength);
+        b1.userSetShipPos("Submarine", submarineLength);
+        b1.userSetShipPos("Battleship", battleshipLength);
+        b1.userSetShipPos("Carrier", carrierLength);
         enter();
         b1.printBoard();
     }

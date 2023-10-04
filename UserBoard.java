@@ -39,7 +39,7 @@ public class UserBoard {
     int colPos = 0;
     int shipDir = 0;
 
-    public void setShipPos(String shipName, int shipLength) {
+    public void userSetShipPos(String shipName, int shipLength) {
         //Destroyer (2-units)
         do {
             System.out.println("");
@@ -57,11 +57,11 @@ public class UserBoard {
         colPos = colPos - 1;
 
         System.out.println("");
-        setShipDir(shipName, shipLength);
+        userSetShipDir(shipName, shipLength);
         
     }
     
-    public void setShipDir(String shipName, int shipLength) {
+    public void userSetShipDir(String shipName, int shipLength) {
         do {
             System.out.println("What direction would you like the " + shipName + " to face?");
             System.out.print("1. Up \n2. Down \n3. Left \n4. Right \n5. Go back to setting the ship position\n\n");
@@ -76,7 +76,7 @@ public class UserBoard {
             endPos = rowPos + shipLength;
             if (endPos > numRows) {
                 errorMsg();
-                setShipDir(shipName, shipLength);
+                userSetShipDir(shipName, shipLength);
             }
             else {
                 for (int i = rowPos; i < endPos; i++) {
@@ -91,7 +91,7 @@ public class UserBoard {
                 }
                 else {
                     errorMsg();
-                    setShipDir(shipName, shipLength);
+                    userSetShipDir(shipName, shipLength);
                 }
             }
         }
@@ -99,7 +99,7 @@ public class UserBoard {
             endPos = rowPos - shipLength;
             if (endPos < 0) {
                 errorMsg();
-                setShipDir(shipName, shipLength);
+                userSetShipDir(shipName, shipLength);
             }
             else {
                 for (int i = colPos; i > endPos; i--) {
@@ -114,7 +114,7 @@ public class UserBoard {
                 }
                 else {
                     errorMsg();
-                    setShipDir(shipName, shipLength);
+                    userSetShipDir(shipName, shipLength);
                 }
             }
         }
@@ -122,7 +122,7 @@ public class UserBoard {
             endPos = colPos + shipLength;
             if (endPos > numCols) {
                 errorMsg();
-                setShipDir(shipName, shipLength);
+                userSetShipDir(shipName, shipLength);
             }
             else {
                 for (int i = colPos; i < endPos; i++) {
@@ -137,7 +137,7 @@ public class UserBoard {
                 }
                 else {
                     errorMsg();
-                    setShipDir(shipName, shipLength);
+                    userSetShipDir(shipName, shipLength);
                 }
             }
         }
@@ -145,7 +145,7 @@ public class UserBoard {
             endPos = colPos - shipLength;
             if (endPos < 0) {
                 errorMsg();
-                setShipDir(shipName, shipLength);
+                userSetShipDir(shipName, shipLength);
             }
             else {
                 for (int i = rowPos; i > endPos; i--) {
@@ -160,12 +160,12 @@ public class UserBoard {
                 }
                 else {
                     errorMsg();
-                    setShipDir(shipName, shipLength);
+                    userSetShipDir(shipName, shipLength);
                 }
             }
         }
         else if (shipDir == 5) {
-            setShipPos(shipName, shipLength);
+            userSetShipPos(shipName, shipLength);
         }
     }
 
