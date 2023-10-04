@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Board {
+public class UserBoard {
     Scanner shipBot = new Scanner(System.in);
     int numRows = 10;
     int numCols = 10;
@@ -42,33 +42,35 @@ public class Board {
     public void setShipPos(String shipName, int shipLength) {
         //Destroyer (2-units)
         do {
-            System.out.print("Enter the row number (1-10) of the head of the Destroyer (2 units): ");
+            System.out.println("");
+            System.out.print("Enter the row number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
             rowPos = shipBot.nextInt();
         }
         while (rowPos < 1 || rowPos > 10);
         rowPos = rowPos - 1;
 
         do {
-            System.out.print("Enter the column number (1-10) of the head of the Destroyer (2 units): ");
+            System.out.print("Enter the column number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
             colPos = shipBot.nextInt();
         }
         while (colPos < 1 || colPos > 10);
         colPos = colPos - 1;
 
+        System.out.println("");
         setShipDir(shipName, shipLength);
         
     }
     
     public void setShipDir(String shipName, int shipLength) {
-        System.out.println("");
         do {
             System.out.println("What direction would you like the " + shipName + " to face?");
-            System.out.print("1. Up \n2. Down \n3. Left \n4. Right \n\n");
+            System.out.print("1. Up \n2. Down \n3. Left \n4. Right \n5. Go back to setting the ship position\n\n");
             shipDir = shipBot.nextInt();
         }
         while (shipDir < 1 || shipDir > 4); 
         
         int endPos;
+        boolean isShip = false;
 
         if (shipDir == 1) {
             endPos = rowPos + shipLength;
@@ -78,7 +80,18 @@ public class Board {
             }
             else {
                 for (int i = rowPos; i < endPos; i++) {
-                    game[i][colPos] = 1;
+                    if (game[1][colPos] == 1) {
+                        isShip = true;
+                    }
+                }
+                if (isShip == false) {
+                    for (int i = rowPos; i < endPos; i++) {
+                        game[i][colPos] = 1;
+                    }
+                }
+                else {
+                    errorMsg();
+                    setShipDir(shipName, shipLength);
                 }
             }
         }
@@ -90,7 +103,18 @@ public class Board {
             }
             else {
                 for (int i = colPos; i > endPos; i--) {
-                    game[i][colPos] = 1;
+                    if (game[i][colPos] == 1) {
+                        isShip = true;
+                    }
+                }
+                if (isShip == false) {
+                    for (int i = colPos; i > endPos; i--) {
+                        game[i][colPos] = 1;
+                    }
+                }
+                else {
+                    errorMsg();
+                    setShipDir(shipName, shipLength);
                 }
             }
         }
@@ -102,7 +126,18 @@ public class Board {
             }
             else {
                 for (int i = colPos; i < endPos; i++) {
-                    game[rowPos][i] = 1;
+                    if (game[rowPos][i] == 1) {
+                        isShip = true;
+                    }
+                }
+                if (isShip == false) {
+                    for (int i = colPos; i < endPos; i++) {
+                        game[rowPos][i] = 1;
+                    }
+                }
+                else {
+                    errorMsg();
+                    setShipDir(shipName, shipLength);
                 }
             }
         }
@@ -114,11 +149,24 @@ public class Board {
             }
             else {
                 for (int i = rowPos; i > endPos; i--) {
-                    game[rowPos][i] = 1;
+                    if (game[rowPos][i] == 1) {
+                        isShip = true;
+                    }
+                }
+                if (isShip == false) {
+                    for (int i = rowPos; i > endPos; i--) {
+                        game[rowPos][i] = 1;
+                    }
+                }
+                else {
+                    errorMsg();
+                    setShipDir(shipName, shipLength);
                 }
             }
         }
-        System.out.println("");
+        else if (shipDir == 5) {
+            setShipPos(shipName, shipLength);
+        }
     }
 
     public void errorMsg() {
