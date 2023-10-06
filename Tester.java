@@ -1,14 +1,12 @@
 public class Tester {
 
+    //defining ship lengths
     final static int destroyerLength = 2;
     final static int cruiserLength = 3;
     final static int submarineLength = 3;
     final static int battleshipLength = 4;
     final static int carrierLength = 5;
 
-    public static void enter() {
-        System.out.println("");
-    }
     //every method should have a comment
 
     public static void main(String[] args) {
@@ -19,7 +17,7 @@ public class Tester {
         b1.userSetShipPos("Submarine", submarineLength);
         b1.userSetShipPos("Battleship", battleshipLength);
         b1.userSetShipPos("Carrier", carrierLength);
-        enter();
+        System.out.println("");
         b1.printBoard();
     }
 }
