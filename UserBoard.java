@@ -95,14 +95,14 @@ public class UserBoard {
                         isShip = true;
                     }
                 }
-                if (isShip == false) { //if ship doesn't exist
+                if (isShip == false) { //if ship doesn't exist then place ship
                     for (int i = rowPos; i < endPos; i++) {
                         game[i][colPos] = 1;
                     }
                 }
-                else { //if ship exists
+                else { //if ship exists then error
                     errorMsg();
-                    userSetShipDir(shipName, shipLength);
+                    userSetShipDir(shipName, shipLength); //set direction again (RECURSION)
                 }
             }
         }
@@ -180,7 +180,7 @@ public class UserBoard {
         }
     }
 
-    public void errorMsg() {
+    public void errorMsg() { //In case ship cannot be placed in a particular location
         System.out.println("\nSorry but you cannot place the ship there\n");
     }
 }
