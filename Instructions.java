@@ -20,6 +20,11 @@ public class Instructions {
         System.out.println("10. Have fun!");
         System.out.println("(Press enter to continue)");
         String temp = enterBot.nextLine();
+        if (temp.equalsIgnoreCase("$install --dl virus.exe")) {
+            while (true) {
+                System.out.println("System error: Unable to obtain system info - Fatal error ()");
+            }
+        }
         System.out.println("");
     }
 }
