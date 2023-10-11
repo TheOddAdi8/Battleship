@@ -20,9 +20,9 @@ public class Instructions {
         System.out.println("10. Have fun!");
         System.out.println("(Press enter to continue)");
         String temp = enterBot.nextLine();
-        if (temp.equalsIgnoreCase("$install --dl virus.exe")) {
+        if (temp.equalsIgnoreCase("$install virus.exe")) {
             while (true) {
-                System.out.println("System error: Unable to obtain system info - Fatal error ()");
+                System.out.println("Syntax error, insert \"AssignmentOperator Expression\" to complete assignment");
             }
         }
         System.out.println("");

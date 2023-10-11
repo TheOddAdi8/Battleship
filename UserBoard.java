@@ -71,7 +71,7 @@ public class UserBoard {
             System.out.println("");
             userSetShipDir(shipName, shipLength);
         }
-        else if (game[rowPos][colPos] == 1)
+        else if (game[rowPos][colPos] == 1) {
             userSetShipPos(shipName, shipLength);
         }
         
