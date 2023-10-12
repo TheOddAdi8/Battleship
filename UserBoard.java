@@ -33,6 +33,15 @@ public class UserBoard {
      *  4 = sink? *
      **************/
 
+    public static void wait(int ms) {
+        try {
+        Thread.sleep(ms);
+        }
+        catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
     public void printBoard() { //prints out board in 10x10 shape
 
         System.out.println("Your board:");
@@ -97,7 +106,7 @@ public class UserBoard {
             }
             else { //checks if ship exists in that spot
                 for (int i = rowPos; i < endPos; i++) {
-                    if (game[1][colPos] == 1) {
+                    if (game[i][colPos] == 1) {
                         isShip = true;
                     }
                 }
@@ -188,5 +197,6 @@ public class UserBoard {
 
     public void errorMsg() { //In case ship cannot be placed in a particular location
         System.out.println("\nSorry but you cannot place the ship there\n");
+        wait(1000);
     }
 }
