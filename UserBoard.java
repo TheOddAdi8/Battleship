@@ -35,6 +35,7 @@ public class UserBoard {
 
     public void printBoard() { //prints out board in 10x10 shape
 
+        System.out.println("Your board:");
         for (int r = 0; r < numRows; r++) { //rows
             for (int c = 0; c < numCols; c++) { //columns
 

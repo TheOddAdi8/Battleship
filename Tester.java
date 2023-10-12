@@ -10,6 +10,7 @@ public class Tester {
     public static void main(String[] args) { //main method
         Instructions i1 = new Instructions(); //welcomes user and shows instructions
         UserBoard b1 = new UserBoard(); //creates main board for user
+        BotBoard 
         b1.printBoard(); //shows board
         //sets ship positions and directions
         b1.userSetShipPos("Destroyer", destroyerLength);
@@ -19,5 +20,7 @@ public class Tester {
         b1.userSetShipPos("Carrier", carrierLength);
         System.out.println("");
         b1.printBoard(); //shows new board
+        System.out.println("\nCreating enemy board...\n");
+
     }
 }
