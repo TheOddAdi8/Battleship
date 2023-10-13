@@ -49,6 +49,9 @@ public class UserBoard {
     }
 
     //defining positions and direction, will later be assigned to a value
+    String strRowPos = "a";
+    String strColPos = "a";
+    String strShipDir = "a";
     int rowPos = 0;
     int colPos = 0;
     int shipDir = 0;
@@ -57,17 +60,20 @@ public class UserBoard {
         do {
             System.out.println("");
             System.out.print("Enter the row number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
-            rowPos = shipBot.nextInt();
+            strRowPos = shipBot.nextLine();
         }
-        while (rowPos < 1 || rowPos > 10);
-        rowPos = rowPos - 1;
+        while (!strRowPos.matches("[0-9]+"));
+        rowPos = Integer.parseInt(strRowPos);
+        
 
         do {
+            System.out.println("");
             System.out.print("Enter the column number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
-            colPos = shipBot.nextInt();
+            strColPos = shipBot.nextLine();
         }
-        while (colPos < 1 || colPos > 10);
-        colPos = colPos - 1;
+        while (!strColPos.matches("[0-9]+"));
+        colPos = Integer.parseInt(strColPos);
+        
 
         if (game[rowPos][colPos] == 0) {
             System.out.println("");

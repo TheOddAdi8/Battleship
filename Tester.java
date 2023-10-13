@@ -23,20 +23,8 @@ public class Tester { //hub to run all the code
         }
     }
 
-    public static void runGame() { //tries to get print 2 boards, main game board and shooting board
-        for (int r = 0; r < numRowsCols; r++) {
-            for (int c = 0; c < numRowsCols; c++) {
-                System.out.print(ub1.game[r][c] + " ");
-            }
-            System.out.print("          ");
-            for (int c = 0; c < numRowsCols; c++) {
-                System.out.print(shootBoard[r][c] + " ");
-            }
-            System.out.println("");
-            shootRow = g1.rowGame();
-            shootCol = g1.colGame();
-            
-        }
+    public void runGame() { //tries to get print 2 boards, main game board and shooting board
+        
     }
 
     public static void main(String[] args) { //main method
@@ -62,7 +50,18 @@ public class Tester { //hub to run all the code
 
         BotBoard bb1 = new BotBoard();
 
-        runGame();
+        for (int r = 0; r < numRowsCols; r++) {
+            for (int c = 0; c < numRowsCols; c++) {
+                System.out.print(ub1.game[r][c] + " ");
+            }
+            System.out.print("          ");
+            for (int c = 0; c < numRowsCols; c++) {
+                System.out.print(shootBoard[r][c] + " ");
+            }
+            System.out.println("");
+        }
+        shootRow = g1.rowGame();
+        shootCol = g1.colGame();
 
     }
 }
