@@ -192,7 +192,7 @@ public class UserBoard {
         wait(1000);
     }
 
-    public static void printRow(int rowNum) {
+    public  void printRow(int rowNum) {
         for (int c = 0; c < numCols; c++) {
             System.out.print(game[rowNum][c] + " ");
         }
