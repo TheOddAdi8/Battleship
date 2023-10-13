@@ -26,8 +26,12 @@ public class Instructions {
         System.out.println("6. Ships must be placed on the board"); wait(200);
         System.out.println("7. Ships may not be placed diagonally"); wait(200);
         System.out.println("8. Ships cannot overlap"); wait(200);
-        System.out.println("9. The game does not completely function"); wait(200);
-        System.out.println("10. Have fun!"); wait(1000);
+        System.out.println("9. You will not be notified when a ship has sunk"); wait(200);
+        System.out.println("10. 0 means empty slot"); wait(200);
+        System.out.println("11. 1 means there is a ship"); wait(200);
+        System.out.println("12. 2 means a ship has been hit"); wait(200);
+        System.out.println("13. 3 means the user has missed"); wait(200);
+        System.out.println("14. Have fun!"); wait(1000);
         System.out.println("(Press enter to continue)");
         String temp = enterBot.nextLine();
         System.out.println("");

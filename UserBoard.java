@@ -14,13 +14,6 @@ public class UserBoard {
     final int battleshipLength = 4;
     final int carrierLength = 5;
 
-    //tried to begin making an array for the start and end positions of each ship to determine whether a ship has been suk
-    int[] destroyerStartEnd = new int[4];
-    int[] cruiserStartEnd = new int[4];
-    int[] submarineStartEnd = new int[4];
-    int[] battleshipStartEnd = new int[4];
-    int[] carrierStartEnd = new int[4];
-
     int[][] game = new int[numRows][numCols]; //Game board
 
     //Game board cheat sheet
@@ -30,7 +23,6 @@ public class UserBoard {
      *  1 = ship  *
      *  2 = hit   *
      *  3 = miss  *
-     *  4 = sink? *
      **************/
 
     public static void wait(int ms) {
@@ -198,5 +190,11 @@ public class UserBoard {
     public void errorMsg() { //In case ship cannot be placed in a particular location
         System.out.println("\nSorry but you cannot place the ship there\n");
         wait(1000);
+    }
+
+    public static void printRow(int rowNum) {
+        for (int c = 0; c < numCols; c++) {
+            System.out.print(game[rowNum][c] + " ");
+        }
     }
 }
