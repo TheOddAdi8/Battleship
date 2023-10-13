@@ -57,23 +57,29 @@ public class UserBoard {
     int shipDir = 0;
 
     public void userSetShipPos(String shipName, int shipLength) { //assigns a spot to the head of the ship
+        System.out.println("");
         do {
-            System.out.println("");
-            System.out.print("Enter the row number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
-            strRowPos = shipBot.nextLine();
+            do {
+                System.out.print("Enter the row number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
+                strRowPos = shipBot.nextLine();
+            }
+            while (!strRowPos.matches("[0-9]+"));
+            rowPos = Integer.parseInt(strRowPos);
         }
-        while (!strRowPos.matches("[0-9]+"));
-        rowPos = Integer.parseInt(strRowPos);
+        while (rowPos < 1 || rowPos > 10);
+        rowPos--;
         
+        
+        do {
+            do {
+                System.out.print("Enter the column number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
+                strColPos = shipBot.nextLine();
+            }
+            while (!strColPos.matches("[0-9]+"));
+            colPos = Integer.parseInt(strColPos);
+        }
+        while (colPos < 1 || colPos > 10);
 
-        do {
-            System.out.println("");
-            System.out.print("Enter the column number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
-            strColPos = shipBot.nextLine();
-        }
-        while (!strColPos.matches("[0-9]+"));
-        colPos = Integer.parseInt(strColPos);
-        
 
         if (game[rowPos][colPos] == 0) {
             System.out.println("");
