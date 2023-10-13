@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Instructions {
+public class Instructions { //provides instructions for user
 
-    public static void wait(int ms) {
+    public static void wait(int ms) { //wait method again to pause for a certain period of time before moving on
         try {
         Thread.sleep(ms);
         }
@@ -12,7 +12,7 @@ public class Instructions {
     }
 
     Scanner enterBot = new Scanner(System.in);
-    public Instructions() { //constructor
+    public Instructions() { //constructor to provide all the instructions to the user
         //Welcome
         System.out.println("\n\nWELCOME TO BATTLESHIP!!!\n"); wait(2000);
         //Instructions
@@ -33,7 +33,7 @@ public class Instructions {
         System.out.println("13. 3 means the user has missed"); wait(200);
         System.out.println("14. Have fun!"); wait(1000);
         System.out.println("(Press enter to continue)");
-        String temp = enterBot.nextLine();
+        String temp = enterBot.nextLine(); //temp is a useless variable
         System.out.println("");
     }
 }

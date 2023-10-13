@@ -192,7 +192,7 @@ public class UserBoard {
         wait(1000);
     }
 
-    public  void printRow(int rowNum) {
+    public  void printRow(int rowNum) { //try to print a row to fix error in Tester
         for (int c = 0; c < numCols; c++) {
             System.out.print(game[rowNum][c] + " ");
         }

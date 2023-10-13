@@ -1,4 +1,4 @@
-public class Tester {
+public class Tester { //hub to run all the code
 
     //defining ship lengths
     final static int destroyerLength = 2;
@@ -14,7 +14,7 @@ public class Tester {
 
     static int[][] shootBoard = new int[numRowsCols][numRowsCols];
 
-    public static void wait(int ms) {
+    public static void wait(int ms) { //method to wait for a certain period of time before moving on
         try {
         Thread.sleep(ms);
         }
@@ -23,7 +23,7 @@ public class Tester {
         }
     }
 
-    public static void runGame() {
+    public static void runGame() { //tries to get print 2 boards, main game board and shooting board
         for (int r = 0; r < numRowsCols; r++) {
             for (int c = 0; c < numRowsCols; c++) {
                 System.out.print(ub1.game[r][c] + " ");

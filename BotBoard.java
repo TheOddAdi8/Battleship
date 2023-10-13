@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class BotBoard {
+public class BotBoard { //creates a board for the bot
     Random randomBot = new Random();
 
     final int numRowsCols = 10;
@@ -20,7 +20,7 @@ public class BotBoard {
 
     int[][] botGame = new int[numRowsCols][numRowsCols];
 
-    public BotBoard() {
+    public BotBoard() { //makes board
         checkShipPlacement(destroyerLength);
         checkShipPlacement(cruiserLength);
         checkShipPlacement(submarineLength);
@@ -30,12 +30,12 @@ public class BotBoard {
         printBoard();
     }
 
-    public int randomNumber(int max) {
+    public int randomNumber(int max) { //picks random number and returns it
         int randomNum = randomBot.nextInt(max);
         return randomNum;
     }
 
-    public void checkShipPlacement(int shipLength) {
+    public void checkShipPlacement(int shipLength) { //checks if ship exists in that spot, if it does, it picks another random spot and direction
         botRow = randomNumber(numRowsCols);
         botCol = randomNumber(numRowsCols);
         direction = randomNumber(numDirections) + 1;
