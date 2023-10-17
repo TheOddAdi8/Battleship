@@ -65,27 +65,23 @@ public class UserBoard {
         shipDir = 0;
         
         System.out.println("");
-        do {
-            do {
+        while (rowPos < 1 || rowPos > 10) {
+            while (!strRowPos.matches("[0-9]+")) {
                 System.out.print("Enter the row number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
                 strRowPos = shipBot.nextLine();
             }
-            while (!strRowPos.matches("[0-9]+"));
             rowPos = Integer.parseInt(strRowPos);
 
         }
-        while (rowPos < 1 || rowPos > 10);
         rowPos--;
         
-        do {
-            do {
+        while (colPos < 1 || colPos > 10) {
+            while (!strColPos.matches("[0-9]+")) {
                 System.out.print("Enter the column number (1-10) of the head of the " + shipName + " (" + shipLength + " units): ");
                 strColPos = shipBot.nextLine();
             }
-            while (!strColPos.matches("[0-9]+"));
             colPos = Integer.parseInt(strColPos);
         }
-        while (colPos < 1 || colPos > 10);
         colPos--;
 
 

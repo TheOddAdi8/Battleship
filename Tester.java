@@ -64,7 +64,8 @@ public class Tester { //hub to run all the code
         System.out.println("\nGame begins"); wait(2000);
         clear();
 
-        BotBoard bb1 = new BotBoard();
+        BotBoard bb1 = new BotBoard(); wait(2000);
+        clear();
 
         for (int r = 0; r < numRowsCols; r++) {
             for (int c = 0; c < numRowsCols; c++) {
@@ -79,7 +80,7 @@ public class Tester { //hub to run all the code
 
         boolean endGame = false;
 
-        while (endGame = false) {
+        while (endGame == false) {
             shootRow = g1.rowGame();
             shootCol = g1.colGame();
 
