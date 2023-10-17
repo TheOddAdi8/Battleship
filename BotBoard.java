@@ -128,6 +128,15 @@ public class BotBoard { //creates a board for the bot
         }
     }
 
+    public int guessRow() {
+        int rowGuess = randomNumber(10);
+        return rowGuess;
+    }
+    public int guessCol() {
+        int colGuess = randomNumber(10);
+        return colGuess;
+    }
+
     public void printBoard() { //prints out board in 10x10 shape
 
         System.out.println("Bot's board:");

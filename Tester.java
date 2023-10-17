@@ -14,13 +14,18 @@ public class Tester { //hub to run all the code
 
     static int[][] shootBoard = new int[numRowsCols][numRowsCols];
 
+    //Source: https://www.geeksforgeeks.org/wait-method-in-java-with-examples/
     public static void wait(int ms) { //method to wait for a certain period of time before moving on
         try {
-        Thread.sleep(ms);
+            Thread.sleep(ms);
         }
         catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    public static void clear() {
+        System.out.print("\033[H\033[2J");
     }
 
     public void runGame() { //tries to get print 2 boards, main game board and shooting board
@@ -29,24 +34,35 @@ public class Tester { //hub to run all the code
 
     public static void main(String[] args) { //main method
         Instructions i1 = new Instructions(); //welcomes user and shows instructions
+        clear();
         UserBoard ub1 = new UserBoard(); //creates main board for user
         Game g1 = new Game();
 
-        ub1.printBoard(); wait(1000); //shows board
+        ub1.printBoard(); wait(500); //shows board
         //sets ship positions and directions    
         ub1.userSetShipPos("Destroyer", destroyerLength);
+        clear();
+        ub1.printBoard(); wait(500);
         ub1.userSetShipPos("Cruiser", cruiserLength);
+        clear();
+        ub1.printBoard(); wait(500);
         ub1.userSetShipPos("Submarine", submarineLength);
+        clear();
+        ub1.printBoard(); wait(500);
         ub1.userSetShipPos("Battleship", battleshipLength);
+        clear();
+        ub1.printBoard(); wait(500);
         ub1.userSetShipPos("Carrier", carrierLength);
-        System.out.println("");
+        clear();
+
         ub1.printBoard(); //shows new board
         System.out.print("\nCreating enemy board"); wait(1000);
         System.out.print("."); wait(1000);
         System.out.print("."); wait(1000);
-        System.out.println("."); wait(1000);
-        System.out.println("Complete"); wait(2000);
-        System.out.println("Game begins"); wait(2000);
+        System.out.print("."); wait(1000);
+        System.out.print("\nComplete"); wait(2000);
+        System.out.println("\nGame begins"); wait(2000);
+        clear();
 
         BotBoard bb1 = new BotBoard();
 
@@ -60,8 +76,19 @@ public class Tester { //hub to run all the code
             }
             System.out.println("");
         }
-        shootRow = g1.rowGame();
-        shootCol = g1.colGame();
+
+        boolean endGame = false;
+
+        while (endGame = false) {
+            shootRow = g1.rowGame();
+            shootCol = g1.colGame();
+
+            if (bb1.botGame[shootRow][shootCol] == 1) {
+                System.out.println("\n\n You hit a ship!");
+                System.out.println(false);
+            }
+            //else if (bb1.bo)
+        }
 
     }
 }

@@ -57,6 +57,13 @@ public class UserBoard {
     int shipDir = 0;
 
     public void userSetShipPos(String shipName, int shipLength) { //assigns a spot to the head of the ship
+        strRowPos = "a";
+        strColPos = "a";
+        strShipDir = "a";
+        rowPos = 0;
+        colPos = 0;
+        shipDir = 0;
+        
         System.out.println("");
         do {
             do {
@@ -65,10 +72,10 @@ public class UserBoard {
             }
             while (!strRowPos.matches("[0-9]+"));
             rowPos = Integer.parseInt(strRowPos);
+
         }
         while (rowPos < 1 || rowPos > 10);
         rowPos--;
-        
         
         do {
             do {
@@ -79,6 +86,7 @@ public class UserBoard {
             colPos = Integer.parseInt(strColPos);
         }
         while (colPos < 1 || colPos > 10);
+        colPos--;
 
 
         if (game[rowPos][colPos] == 0) {
