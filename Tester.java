@@ -1,3 +1,12 @@
+/**
+ * Tester.java
+ * @author Adi Duggal
+ * @since 10/18/2023
+ * @version 1.0.0
+ * 
+ * This class runs the whole program and creates instances of all the other programs.
+ */
+
 public class Tester { //hub to run all the code
 
     //defining ship lengths
