@@ -1,10 +1,7 @@
 import java.util.Scanner;
 
 public class Game {
-    /* 0 = end game
-     *  1 = user turn
-     *  2 = bot turn
-     */
+
     static Scanner scanBot = new Scanner(System.in);
 
     public static int shootRow = 0;
@@ -24,5 +21,4 @@ public class Game {
         }
         return shootCol;
     }
-
 }

@@ -1,7 +1,7 @@
 /**
  * Tester.java
  * @author Adi Duggal
- * @since 10/18/2023
+ * @since 10/19/2023
  * @version 1.0.0
  * 
  * This class runs the whole program and creates instances of all the other programs.
@@ -20,8 +20,25 @@ public class Tester { //hub to run all the code
 
     static int shootRow = 0;
     static int shootCol = 0;
+    static int spotVal = 0;
 
     static int[][] shootBoard = new int[numRowsCols][numRowsCols];
+
+    static UserBoard ub1 = new UserBoard(); //creates main board for user
+    static Game g1 = new Game();
+
+    public static void printBoards() {
+        for (int r = 0; r < numRowsCols; r++) {
+            for (int c = 0; c < numRowsCols; c++) {
+                System.out.print(ub1.game[r][c] + " ");
+            }
+            System.out.print("          ");
+            for (int c = 0; c < numRowsCols; c++) {
+                System.out.print(shootBoard[r][c] + " ");
+            }
+            System.out.println("");
+        }
+    }
 
     //Source: https://www.geeksforgeeks.org/wait-method-in-java-with-examples/
     public static void wait(int ms) { //method to wait for a certain period of time before moving on
@@ -33,21 +50,16 @@ public class Tester { //hub to run all the code
         }
     }
 
-    public static void clear() {
+    public static void clear() { //Source: Mr. Twyford and Geeks for Geeks
         System.out.print("\033[H\033[2J");
-    }
-
-    public void runGame() { //tries to get print 2 boards, main game board and shooting board
-        
     }
 
     public static void main(String[] args) { //main method
         Instructions i1 = new Instructions(); //welcomes user and shows instructions
         clear();
-        UserBoard ub1 = new UserBoard(); //creates main board for user
-        Game g1 = new Game();
 
         ub1.printBoard(); wait(500); //shows board
+
         //sets ship positions and directions    
         ub1.userSetShipPos("Destroyer", destroyerLength);
         clear();
@@ -65,40 +77,68 @@ public class Tester { //hub to run all the code
         clear();
 
         ub1.printBoard(); //shows new board
-        System.out.print("\nCreating enemy board"); wait(1000);
-        System.out.print("."); wait(1000);
-        System.out.print("."); wait(1000);
-        System.out.print("."); wait(1000);
-        System.out.print("\nComplete"); wait(2000);
-        System.out.println("\nGame begins"); wait(2000);
+        System.out.print("\nCreating board"); wait(500);
+        System.out.print("."); wait(500);
+        System.out.print("."); wait(500);
+        System.out.print("."); wait(500);
+        clear();
+        ub1.printBoard(); //shows new board
+        System.out.print("\nCreating board"); wait(500);
+        System.out.print("."); wait(500);
+        System.out.print("."); wait(500);
+        System.out.print("."); wait(500);
+
+        System.out.print("\nComplete"); wait(1000);
+        System.out.println("\nGame begins"); wait(1000);
         clear();
 
-        BotBoard bb1 = new BotBoard(); wait(2000);
-        clear();
+        boolean userWin = false;
+        int numMoves = 0;
+        int counter = 0;
 
-        for (int r = 0; r < numRowsCols; r++) {
-            for (int c = 0; c < numRowsCols; c++) {
-                System.out.print(ub1.game[r][c] + " ");
+        do {
+            shootRow = 0;
+            shootCol = 0;
+            spotVal = 0;
+            numMoves++;
+
+            shootRow = rowShoot();
+            shootCol = colShoot();
+            spotVal = ub1.game[shootRow][shootCol];
+            //clear();
+
+            if (spotVal == 1) {
+                shootBoard[shootRow][shootCol] = 2;
+                System.out.println("You hit a ship!\n");
             }
-            System.out.print("          ");
-            for (int c = 0; c < numRowsCols; c++) {
-                System.out.print(shootBoard[r][c] + " ");
+            else if (spotVal == 0) {
+                shootBoard[shootRow][shootCol] = 3;
+                System.out.println("You missed!\n");
             }
-            System.out.println("");
+            else if (spotVal == 2 || spotVal == 3) {
+                System.out.println("You already shot there! Try looking at the board next time.\n");
+            }
+
+            wait(500);
+
+            counter = 0;
+            for (int r = 0; r < numRowsCols; r++) {
+                for (int c = 0; c < numRowsCols; c++) {
+                    if (ub1.game[r][c] == 1) {
+                        counter++;
+                    }
+                }
+            }
+            if (counter == 0) {
+                userWin = true;
+            }
         }
-
-        boolean endGame = false;
-
-        while (endGame == false) {
-            shootRow = g1.rowGame();
-            shootCol = g1.colGame();
-
-            if (bb1.botGame[shootRow][shootCol] == 1) {
-                System.out.println("\n\n You hit a ship!");
-                System.out.println(false);
-            }
-            //else if (bb1.bo)
-        }
-
+        while (userWin == false);
+    }
+    public static int rowShoot() {
+        return g1.rowGame();
+    }
+    public static int colShoot() {
+        return g1.colGame();
     }
 }
