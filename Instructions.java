@@ -27,10 +27,9 @@ public class Instructions { //provides instructions for user
         //Instructions
         System.out.println("Rules:"); wait(100);
         System.out.println("You have two boards"); wait(100);
-        System.out.println("One will be used for placing your ships"); wait(100);
+        System.out.println("One will be used for placing your ships (in normal mode)"); wait(100);
         System.out.println("And the other one will be for shooting enemy ships"); wait(100);
         System.out.println("The goal of this game is to try to guess where the enemy ships are"); wait(100);
-        System.out.println("BEFORE all your ships are taken out by the enemy"); wait(100);
         System.out.println("Next, the instructions will be listed");
         wait(2000);
         System.out.println("\nInstructions/tips:"); wait(100);
@@ -52,5 +51,18 @@ public class Instructions { //provides instructions for user
         System.out.println("(Press enter to continue)");
         String temp = enterBot.nextLine(); //temp is a useless variable
         System.out.println("");
+    }
+
+    public void normalFast() {
+        System.out.println("Would you like to play normal mode or fast mode?"); wait(100);
+        System.out.println("Normal is when someone places ships and the other person guesses the locations of the ships."); wait(100);
+        System.out.println("Fast is when the computer places ships and you have to guess the locations of the ships."); wait(100);
+        String normalFast = enterBot.nextLine();
+        if (normalFast.equalsIgnoreCase("normal")) {
+            //stuff
+        }
+        if (normalFast.equalsIgnoreCase("fast")) {
+            //more stuff
+        }
     }
 }

@@ -21,6 +21,10 @@ public class Tester { //hub to run all the code
     static int shootRow = 0;
     static int shootCol = 0;
     static int spotVal = 0;
+    static int numMoves = 0;
+    static int counter = 0;
+
+    static boolean userWin = false;
 
     static int[][] shootBoard = new int[numRowsCols][numRowsCols];
 
@@ -57,6 +61,7 @@ public class Tester { //hub to run all the code
     public static void main(String[] args) { //main method
         Instructions i1 = new Instructions(); //welcomes user and shows instructions
         clear();
+        i1.normalFast();
 
         ub1.printBoard(); wait(500); //shows board
 
@@ -92,53 +97,45 @@ public class Tester { //hub to run all the code
         System.out.println("\nGame begins"); wait(1000);
         clear();
 
-        boolean userWin = false;
-        int numMoves = 0;
-        int counter = 0;
-
         do {
-            shootRow = 0;
-            shootCol = 0;
-            spotVal = 0;
-            numMoves++;
-
-            shootRow = rowShoot();
-            shootCol = colShoot();
-            spotVal = ub1.game[shootRow][shootCol];
-            //clear();
-
-            if (spotVal == 1) {
-                shootBoard[shootRow][shootCol] = 2;
-                System.out.println("You hit a ship!\n");
-            }
-            else if (spotVal == 0) {
-                shootBoard[shootRow][shootCol] = 3;
-                System.out.println("You missed!\n");
-            }
-            else if (spotVal == 2 || spotVal == 3) {
-                System.out.println("You already shot there! Try looking at the board next time.\n");
-            }
-
-            wait(500);
-
-            counter = 0;
-            for (int r = 0; r < numRowsCols; r++) {
-                for (int c = 0; c < numRowsCols; c++) {
-                    if (ub1.game[r][c] == 1) {
-                        counter++;
-                    }
-                }
-            }
-            if (counter == 0) {
-                userWin = true;
-            }
+            shootStuff();
         }
         while (userWin == false);
     }
-    public static int rowShoot() {
-        return g1.rowGame();
-    }
-    public static int colShoot() {
-        return g1.colGame();
+    public static void shootStuff() {
+        shootRow = 0;
+        shootCol = 0;
+        spotVal = -1;
+        numMoves++;
+        shootRow = g1.rowGame();
+        shootCol = g1.colGame();
+        spotVal = ub1.game[shootRow][shootCol];
+        //clear();
+        if (spotVal == 1) {
+            shootBoard[shootRow][shootCol] = 2;
+            System.out.println("You hit a ship!\n");
+            spotVal = -1;
+        }
+        else if (spotVal == 0) {
+            shootBoard[shootRow][shootCol] = 3;
+            System.out.println("You missed!\n");
+            spotVal = -1;
+        }
+        else if (spotVal == 2 || spotVal == 3) {
+            System.out.println("You already shot there! Try looking at the board next time.\n");
+            spotVal = -1;
+        }
+        wait(500);
+        counter = 0;
+        for (int r = 0; r < numRowsCols; r++) {
+            for (int c = 0; c < numRowsCols; c++) {
+                if (ub1.game[r][c] == 1) {
+                    counter++;
+                }
+            }
+        }
+        if (counter == 0) {
+            userWin = true;
+        }
     }
 }
