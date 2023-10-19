@@ -39,7 +39,38 @@ public class Tester { //hub to run all the code
     static Scanner scanBot = new Scanner(System.in);
 
     public static void printBoard() {
+        System.out.println("    1 2 3 4 5 6 7 8 9 10\n");
         for (int r = 0; r < numRowsCols; r++) {
+            if (r == 0) {
+                System.out.print("1   ");
+            }
+            else if (r == 1) {
+                System.out.print("2   ");
+            }
+            else if (r == 2) {
+                System.out.print("3   ");
+            }
+            else if (r == 3) {
+                System.out.print("4   ");
+            }
+            else if (r == 4) {
+                System.out.print("5   ");
+            }
+            else if (r == 5) {
+                System.out.print("6   ");
+            }
+            else if (r == 6) {
+                System.out.print("7   ");
+            }
+            else if (r == 7) {
+                System.out.print("8   ");
+            }
+            else if (r == 8) {
+                System.out.print("9   ");
+            }
+            else if (r == 9) {
+                System.out.print("10  ");
+            }
             for (int c = 0; c < numRowsCols; c++) {
                 System.out.print(shootBoard[r][c] + " ");
             }
@@ -111,17 +142,19 @@ public class Tester { //hub to run all the code
         if (normalFast == 1) {
             do {
                 ub1ShootStuff();
+                clear();
             }
             while (userWin == false);
         }
         else if (normalFast == 2) {
             do {
                 bb1ShootStuff();
+                clear();
             }
             while (userWin == false);
         }
 
-        clear();
+        clear(); //just to be sure :)
         System.out.println("Yay! you won in " + numMoves + "moves!");
     }
     public static void ub1ShootStuff() {
@@ -152,11 +185,13 @@ public class Tester { //hub to run all the code
         clear();
         if (spotVal == 1) {
             shootBoard[shootRow][shootCol] = 2;
+            ub1.game[shootRow][shootCol] = 2;
             System.out.println("You hit a ship!\n");
             spotVal = -1;
         }
         else if (spotVal == 0) {
             shootBoard[shootRow][shootCol] = 3;
+            ub1.game[shootRow][shootCol] = 3;
             System.out.println("You missed!\n");
             spotVal = -1;
         }
@@ -208,11 +243,13 @@ public class Tester { //hub to run all the code
 
         if (spotVal == 1) {
             shootBoard[shootRow][shootCol] = 2;
+            bb1.botGame[shootRow][shootCol] = 2;
             System.out.println("You hit a ship!\n");
             spotVal = -1;
         }
         else if (spotVal == 0) {
             shootBoard[shootRow][shootCol] = 3;
+            bb1.botGame[shootRow][shootCol] = 3;
             System.out.println("You missed!\n");
             spotVal = -1;
         }
