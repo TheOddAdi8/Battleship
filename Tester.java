@@ -108,13 +108,6 @@ public class Tester { //hub to run all the code
         System.out.println("\nGame begins"); wait(1000);
         clear();
 
-        for (int r = 0; r < numRowsCols; r++) {
-            for (int c = 0; c < numRowsCols; c++) {
-                System.out.print(bb1.botGame[r][c] + " ");
-            }
-            System.out.println("");
-        }
-
         if (normalFast == 1) {
             do {
                 ub1ShootStuff();
@@ -209,7 +202,8 @@ public class Tester { //hub to run all the code
             }
             shootCol = Integer.parseInt(strShootCol);
         }
-        spotVal = ub1.game[shootRow][shootCol];
+        shootCol--;
+        spotVal = bb1.botGame[shootRow][shootCol];
         clear();
 
         if (spotVal == 1) {
