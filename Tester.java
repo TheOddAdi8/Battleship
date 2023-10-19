@@ -61,25 +61,27 @@ public class Tester { //hub to run all the code
     public static void main(String[] args) { //main method
         Instructions i1 = new Instructions(); //welcomes user and shows instructions
         clear();
-        i1.normalFast();
+        int normalFast = i1.normalFast();
 
-        ub1.printBoard(); wait(500); //shows board
+        if (normalFast == 1) {
+            ub1.printBoard(); wait(500); //shows board
 
-        //sets ship positions and directions    
-        ub1.userSetShipPos("Destroyer", destroyerLength);
-        clear();
-        ub1.printBoard(); wait(500);
-        ub1.userSetShipPos("Cruiser", cruiserLength);
-        clear();
-        ub1.printBoard(); wait(500);
-        ub1.userSetShipPos("Submarine", submarineLength);
-        clear();
-        ub1.printBoard(); wait(500);
-        ub1.userSetShipPos("Battleship", battleshipLength);
-        clear();
-        ub1.printBoard(); wait(500);
-        ub1.userSetShipPos("Carrier", carrierLength);
-        clear();
+            //sets ship positions and directions    
+            ub1.userSetShipPos("Destroyer", destroyerLength);
+            clear();
+            ub1.printBoard(); wait(500);
+            ub1.userSetShipPos("Cruiser", cruiserLength);
+            clear();
+            ub1.printBoard(); wait(500);
+            ub1.userSetShipPos("Submarine", submarineLength);
+            clear();
+            ub1.printBoard(); wait(500);
+            ub1.userSetShipPos("Battleship", battleshipLength);
+            clear();
+            ub1.printBoard(); wait(500);
+            ub1.userSetShipPos("Carrier", carrierLength);
+            clear();
+        }
 
         ub1.printBoard(); //shows new board
         System.out.print("\nCreating board"); wait(500);
@@ -101,6 +103,9 @@ public class Tester { //hub to run all the code
             shootStuff();
         }
         while (userWin == false);
+
+        clear();
+        System.out.println("Yay! you won in " + numMoves + "moves!");
     }
     public static void shootStuff() {
         shootRow = 0;

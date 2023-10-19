@@ -53,16 +53,20 @@ public class Instructions { //provides instructions for user
         System.out.println("");
     }
 
-    public void normalFast() {
+    public int normalFast() {
         System.out.println("Would you like to play normal mode or fast mode?"); wait(100);
         System.out.println("Normal is when someone places ships and the other person guesses the locations of the ships."); wait(100);
         System.out.println("Fast is when the computer places ships and you have to guess the locations of the ships."); wait(100);
         String normalFast = enterBot.nextLine();
         if (normalFast.equalsIgnoreCase("normal")) {
-            //stuff
+            return 1;
         }
-        if (normalFast.equalsIgnoreCase("fast")) {
-            //more stuff
+        else if (normalFast.equalsIgnoreCase("fast")) {
+            return 2;
         }
+        else {
+            normalFast();
+        }
+        return 0;
     }
 }
