@@ -25,7 +25,7 @@ public class Instructions { //provides instructions for user
 
     public void rulesAndStuff() {
         //Instructions
-        System.out.println("Rules:"); wait(100);
+        System.out.println("\nRules:"); wait(100);
         System.out.println("You have two boards"); wait(100);
         System.out.println("One will be used for placing your ships (in normal mode)"); wait(100);
         System.out.println("And the other one will be for shooting enemy ships"); wait(100);

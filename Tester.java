@@ -7,6 +7,8 @@
  * This class runs the whole program and creates instances of all the other programs.
  */
 
+import java.util.Scanner;
+
 public class Tester { //hub to run all the code
 
     //defining ship lengths
@@ -18,6 +20,9 @@ public class Tester { //hub to run all the code
 
     final static int numRowsCols = 10;
 
+    static String strShootRow = "";
+    static String strShootCol = "";
+    static String strSpotVal = "";
     static int shootRow = 0;
     static int shootCol = 0;
     static int spotVal = 0;
@@ -31,6 +36,7 @@ public class Tester { //hub to run all the code
     static UserBoard ub1 = new UserBoard(); //creates main board for user
     static BotBoard bb1 = new BotBoard();
     static Game g1 = new Game();
+    static Scanner scanBot = new Scanner(System.in);
 
     public static void printBoard() {
         for (int r = 0; r < numRowsCols; r++) {
@@ -129,12 +135,28 @@ public class Tester { //hub to run all the code
         shootRow = 0;
         shootCol = 0;
         spotVal = -1;
+        strShootRow = "";
+        strShootCol = "";
+        strSpotVal = "";
         numMoves++;
         printBoard();
-        shootRow = g1.rowGame();
-        shootCol = g1.colGame();
+        while (shootRow < 1 || shootRow > 10) {
+            while (!strShootRow.matches("[0-9]+")) {
+                System.out.println("What row would you like to shoot?");
+                strShootRow = scanBot.nextLine();
+            }
+            shootRow = Integer.parseInt(strShootRow);
+        }
+        shootRow--;
+        while (shootCol < 1 || shootCol > 10) {
+            while (!strShootCol.matches("[0-9]+")) {
+                System.out.println("What column would you like to shoot?");
+                strShootCol = scanBot.nextLine();
+            }
+            shootCol = Integer.parseInt(strShootCol);
+        }
         spotVal = ub1.game[shootRow][shootCol];
-        //clear();
+        clear();
         if (spotVal == 1) {
             shootBoard[shootRow][shootCol] = 2;
             System.out.println("You hit a ship!\n");
@@ -167,12 +189,29 @@ public class Tester { //hub to run all the code
         shootRow = 0;
         shootCol = 0;
         spotVal = -1;
+        strShootRow = "";
+        strShootCol = "";
+        strSpotVal = "";
         printBoard();
         numMoves++;
-        shootRow = g1.rowGame();
-        shootCol = g1.colGame();
-        spotVal = bb1.botGame[shootRow][shootCol];
-        //clear();
+        while (shootRow < 1 || shootRow > 10) {
+            while (!strShootRow.matches("[0-9]+")) {
+                System.out.println("What row would you like to shoot?");
+                strShootRow = scanBot.nextLine();
+            }
+            shootRow = Integer.parseInt(strShootRow);
+        }
+        shootRow--;
+        while (shootCol < 1 || shootCol > 10) {
+            while (!strShootCol.matches("[0-9]+")) {
+                System.out.println("What column would you like to shoot?");
+                strShootCol = scanBot.nextLine();
+            }
+            shootCol = Integer.parseInt(strShootCol);
+        }
+        spotVal = ub1.game[shootRow][shootCol];
+        clear();
+
         if (spotVal == 1) {
             shootBoard[shootRow][shootCol] = 2;
             System.out.println("You hit a ship!\n");
@@ -191,7 +230,7 @@ public class Tester { //hub to run all the code
         counter = 0;
         for (int r = 0; r < numRowsCols; r++) {
             for (int c = 0; c < numRowsCols; c++) {
-                if (ub1.game[r][c] == 1) {
+                if (bb1.botGame[r][c] == 1) {
                     counter++;
                 }
             }
