@@ -29,14 +29,11 @@ public class Tester { //hub to run all the code
     static int[][] shootBoard = new int[numRowsCols][numRowsCols];
 
     static UserBoard ub1 = new UserBoard(); //creates main board for user
+    static BotBoard bb1 = new BotBoard();
     static Game g1 = new Game();
 
-    public static void printBoards() {
+    public static void printBoard() {
         for (int r = 0; r < numRowsCols; r++) {
-            for (int c = 0; c < numRowsCols; c++) {
-                System.out.print(ub1.game[r][c] + " ");
-            }
-            System.out.print("          ");
             for (int c = 0; c < numRowsCols; c++) {
                 System.out.print(shootBoard[r][c] + " ");
             }
@@ -62,6 +59,7 @@ public class Tester { //hub to run all the code
         Instructions i1 = new Instructions(); //welcomes user and shows instructions
         clear();
         int normalFast = i1.normalFast();
+        clear();
 
         if (normalFast == 1) {
             ub1.printBoard(); wait(500); //shows board
@@ -82,14 +80,19 @@ public class Tester { //hub to run all the code
             ub1.userSetShipPos("Carrier", carrierLength);
             clear();
         }
+        else if (normalFast == 2) {
+            bb1.checkShipPlacement(2);
+            bb1.checkShipPlacement(3);
+            bb1.checkShipPlacement(3);
+            bb1.checkShipPlacement(4);
+            bb1.checkShipPlacement(5);
+        }
 
-        ub1.printBoard(); //shows new board
         System.out.print("\nCreating board"); wait(500);
         System.out.print("."); wait(500);
         System.out.print("."); wait(500);
         System.out.print("."); wait(500);
         clear();
-        ub1.printBoard(); //shows new board
         System.out.print("\nCreating board"); wait(500);
         System.out.print("."); wait(500);
         System.out.print("."); wait(500);
@@ -99,22 +102,76 @@ public class Tester { //hub to run all the code
         System.out.println("\nGame begins"); wait(1000);
         clear();
 
-        do {
-            shootStuff();
+        for (int r = 0; r < numRowsCols; r++) {
+            for (int c = 0; c < numRowsCols; c++) {
+                System.out.print(bb1.botGame[r][c] + " ");
+            }
+            System.out.println("");
         }
-        while (userWin == false);
+
+        if (normalFast == 1) {
+            do {
+                ub1ShootStuff();
+            }
+            while (userWin == false);
+        }
+        else if (normalFast == 2) {
+            do {
+                bb1ShootStuff();
+            }
+            while (userWin == false);
+        }
 
         clear();
         System.out.println("Yay! you won in " + numMoves + "moves!");
     }
-    public static void shootStuff() {
+    public static void ub1ShootStuff() {
         shootRow = 0;
         shootCol = 0;
         spotVal = -1;
         numMoves++;
+        printBoard();
         shootRow = g1.rowGame();
         shootCol = g1.colGame();
         spotVal = ub1.game[shootRow][shootCol];
+        //clear();
+        if (spotVal == 1) {
+            shootBoard[shootRow][shootCol] = 2;
+            System.out.println("You hit a ship!\n");
+            spotVal = -1;
+        }
+        else if (spotVal == 0) {
+            shootBoard[shootRow][shootCol] = 3;
+            System.out.println("You missed!\n");
+            spotVal = -1;
+        }
+        else if (spotVal == 2 || spotVal == 3) {
+            System.out.println("You already shot there! Try looking at the board next time.\n");
+            spotVal = -1;
+        }
+        wait(500);
+        counter = 0;
+        for (int r = 0; r < numRowsCols; r++) {
+            for (int c = 0; c < numRowsCols; c++) {
+                if (ub1.game[r][c] == 1) {
+                    counter++;
+                }
+            }
+        }
+        if (counter == 0) {
+            userWin = true;
+        }
+    }
+
+    public static void bb1ShootStuff() {
+        shootRow = 0;
+        shootCol = 0;
+        spotVal = -1;
+        printBoard();
+        numMoves++;
+        shootRow = g1.rowGame();
+        shootCol = g1.colGame();
+        spotVal = bb1.botGame[shootRow][shootCol];
         //clear();
         if (spotVal == 1) {
             shootBoard[shootRow][shootCol] = 2;

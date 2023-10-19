@@ -65,8 +65,7 @@ public class Instructions { //provides instructions for user
             return 2;
         }
         else {
-            normalFast();
+            return normalFast();
         }
-        return 0;
     }
 }
