@@ -1,3 +1,12 @@
+/**
+ * Instructions.java
+ * @author Adi Duggal
+ * @since 10/19/2023
+ * @version 1.0.0
+ * 
+ * This class provides instructions and rules for the user
+ */
+
 import java.util.Scanner;
 
 public class Instructions { //provides instructions for user
@@ -23,7 +32,7 @@ public class Instructions { //provides instructions for user
         }
     }
 
-    public void rulesAndStuff() {
+    public void rulesAndStuff() { //if user wants to read rules and tips
         //Instructions
         System.out.println("\nRules:"); wait(100);
         System.out.println("You have two boards"); wait(100);
@@ -53,7 +62,7 @@ public class Instructions { //provides instructions for user
         System.out.println("");
     }
 
-    public int normalFast() {
+    public int normalFast() { //user chooses normal or fast game mode
         System.out.println("Would you like to play normal mode or fast mode?"); wait(100);
         System.out.println("Normal is when someone places ships and the other person guesses the locations of the ships."); wait(100);
         System.out.println("Fast is when the computer places ships and you have to guess the locations of the ships."); wait(100);

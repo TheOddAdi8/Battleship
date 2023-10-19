@@ -1,4 +1,13 @@
-import java.util.Random;
+/**
+ * BotBoard.java
+ * @author Adi Duggal
+ * @since 10/19/2023
+ * @version 1.0.0
+ * 
+ * This class generates a random position and direction for ships for the fast game mode. 
+ */
+
+ import java.util.Random;
 
 public class BotBoard { //creates a board for the bot
     Random randomBot = new Random();

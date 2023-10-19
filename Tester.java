@@ -35,10 +35,9 @@ public class Tester { //hub to run all the code
 
     static UserBoard ub1 = new UserBoard(); //creates main board for user
     static BotBoard bb1 = new BotBoard();
-    static Game g1 = new Game();
     static Scanner scanBot = new Scanner(System.in);
 
-    public static void printBoard() {
+    public static void printBoard() { //prints the shooting board with guiding numbers from 1-10
         System.out.println("    1 2 3 4 5 6 7 8 9 10\n");
         for (int r = 0; r < numRowsCols; r++) {
             if (r == 0) {
@@ -137,6 +136,15 @@ public class Tester { //hub to run all the code
 
         System.out.print("\nComplete"); wait(1000);
         System.out.println("\nGame begins"); wait(1000);
+        System.out.println("DON'T"); wait(500);
+        System.out.println("ENTER"); wait(500);
+        System.out.println("A"); wait(500);
+        System.out.println("NUMBER"); wait(500);
+        System.out.println("THAT"); wait(500);
+        System.out.println("ISN'T"); wait(500);
+        System.out.println("ON"); wait(500);
+        System.out.println("THE"); wait(500);
+        System.out.println("BOARD!"); wait(1000);
         clear();
 
         if (normalFast == 1) {
@@ -155,9 +163,13 @@ public class Tester { //hub to run all the code
         }
 
         clear(); //just to be sure :)
-        System.out.println("Yay! you won in " + numMoves + "moves!");
+        System.out.println("Yay! you won in " + numMoves + " moves!");
+        if (numMoves == 17) {
+            System.out.println("You got the highest score possible!");
+        }
+        System.out.println("Restart the program to play again.\n");
     }
-    public static void ub1ShootStuff() {
+    public static void ub1ShootStuff() { // shooting in the normal game mode
         shootRow = 0;
         shootCol = 0;
         spotVal = -1;
@@ -181,6 +193,7 @@ public class Tester { //hub to run all the code
             }
             shootCol = Integer.parseInt(strShootCol);
         }
+        shootCol--;
         spotVal = ub1.game[shootRow][shootCol];
         clear();
         if (spotVal == 1) {
@@ -213,7 +226,7 @@ public class Tester { //hub to run all the code
         }
     }
 
-    public static void bb1ShootStuff() {
+    public static void bb1ShootStuff() { //shooting in the fast game mode
         shootRow = 0;
         shootCol = 0;
         spotVal = -1;

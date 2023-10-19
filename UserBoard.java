@@ -1,3 +1,12 @@
+/**
+ * UserBoard.java
+ * @author Adi Duggal
+ * @since 10/19/2023
+ * @version 1.0.0
+ * 
+ * This class lets the user place ships on the board in the normal version of the game.
+ */
+
 import java.util.Scanner;
 
 public class UserBoard {
@@ -25,7 +34,7 @@ public class UserBoard {
      *  3 = miss  *
      **************/
 
-    public static void wait(int ms) {
+    public static void wait(int ms) { //waiting mechanism - source in tester class
         try {
         Thread.sleep(ms);
         }
